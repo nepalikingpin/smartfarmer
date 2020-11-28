@@ -4,7 +4,6 @@ Smart Farmer is a IOT system that turns a normal field into a smart farm. The fa
 The smart farm is comprised of:
 - Arduino UNO
 - DHT22 Sensor(Reads Sorrounding Temperature and Humidity)
-- DS18B20 Sensor( Reads water temperature for irrigation)
 - Soil Moisture Sensor( Reads moisture present in soil)
 - Ultrasonic Sensor(Measures Distance(Here used for monitoring trespassers in farm)
 - 12V Water Pump

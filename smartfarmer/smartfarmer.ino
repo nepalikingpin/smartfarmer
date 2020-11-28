@@ -1,4 +1,3 @@
-
 int relayPin = 7;
 
 void setup() {
