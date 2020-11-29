@@ -9,6 +9,12 @@ int sensor_pin = A0; //Soil Sensor input at Analog Pin A0
 
 int output_value ;
 
+const int trigPin = 9;
+const int echoPin = 10;
+
+long duration;
+int distance;
+
 int relayPin = 7;
 
 void setup() {
@@ -16,6 +22,9 @@ void setup() {
    Serial.begin(9600);
    
    pinMode(relayPin, OUTPUT);
+
+   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+   pinMode(echoPin, INPUT);
 
    dht.begin();
 
@@ -69,6 +78,28 @@ void loop() {
   Serial.print(t);
   Serial.println(" *C ");
 
-   }
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+
+// Calculating the distance
+  distance= duration*0.034/2;
+  Serial.print(distance);
+  delay(100);
+  if(distance <15) {
+  Serial.println("!!!!Trespasser or Animal in the Field!!!");
+  delay(3000);
+  }
+  else {
+  Serial.println("Field is safe");
+  }
+  
+ }
 
    
